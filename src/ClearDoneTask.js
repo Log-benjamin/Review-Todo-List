@@ -51,22 +51,3 @@ export function cleartasksDone(e) {
     listHolder[i].children[0].children[1].id = tempStore[i].id;
   }
 }
-
-export function checkingTheEdit(e) {
-  const two = e.target.parentElement.parentElement.children[0].children[2];
-  one.onclick = function check(e) {
-    if (!two.value) {
-      const three = e.target.parentElement.parentElement.parentElement.children[0].children[1];
-      targetElement.innerHTML = three.innerHTML;
-      insertInput.remove();
-      checkMark.remove();
-    } else {
-      targetElement.innerHTML = two.value;
-      insertInput.remove();
-      checkMark.remove();
-      const Info = storageInfo();
-      Info[targetElement.id - 1].description = two.value;
-      localStorage.setItem('TasksInfo', JSON.stringify(Info));
-    }
-  };
-}

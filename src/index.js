@@ -4,7 +4,7 @@ import {
   displayTasksOnWebPage, addItem, removeItem,
   storageInfo,
 } from './AddandRemoveTask.js';
-import { cleartasksDone, checkbuttonClicked, checkingTheEdit } from './ClearDoneTask.js';
+import { cleartasksDone, checkbuttonClicked } from './ClearDoneTask.js';
 
 const TaskListContainer = document.querySelector('.todo-Container');
 const clearcompleteTasks = document.querySelector('.clearBtn');
@@ -53,7 +53,22 @@ TaskListContainer.addEventListener('click', (e) => {
 
     const one = e.target.parentElement.parentElement.children[0].children[3];
     if (one.className === 'checkEdit') {
-      checkingTheEdit(e);
+      const two = e.target.parentElement.parentElement.children[0].children[2];
+      one.onclick = function check(e) {
+        if (!two.value) {
+          const three = e.target.parentElement.parentElement.parentElement.children[0].children[1];
+          targetElement.innerHTML = three.innerHTML;
+          insertInput.remove();
+          checkMark.remove();
+        } else {
+          targetElement.innerHTML = two.value;
+          insertInput.remove();
+          checkMark.remove();
+          const Info = storageInfo();
+          Info[targetElement.id - 1].description = two.value;
+          localStorage.setItem('TasksInfo', JSON.stringify(Info));
+        }
+      };
     }
   }
   if (e.target.className === 'checkB') {
