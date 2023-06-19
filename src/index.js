@@ -7,7 +7,7 @@ import {
 import { cleartasksDone, checkbuttonClicked } from './ClearDoneTask.js';
 
 const TaskListContainer = document.querySelector('.todo-Container');
-const clearcompleteTasks = document.querySelector('.clearBtn');
+const clearCompleteTasks = document.querySelector('.clearBtn');
 const addInTodo = document.querySelector('.fa-plus');
 const appLogo = document.querySelector('.logo');
 const myIcon = new Image();
@@ -76,7 +76,7 @@ TaskListContainer.addEventListener('click', (e) => {
   }
 });
 
-clearcompleteTasks.addEventListener('click', (e) => {
+clearCompleteTasks.addEventListener('click', (e) => {
   cleartasksDone(e);
   window.location.reload();
 });
